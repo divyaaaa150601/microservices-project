@@ -39,5 +39,7 @@ COPY --from=builder /usr/local/lib/python3.10/ /usr/local/lib/python3.10/
 COPY . .
 
 EXPOSE 8080
+ADD https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/v0.4.38/grpc_health_probe-linux-amd64 /bin/grpc_health_probe
 
+RUN chmod +x /bin/grpc_health_probe
 ENTRYPOINT ["python", "email_server.py"]
